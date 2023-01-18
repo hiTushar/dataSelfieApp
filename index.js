@@ -15,9 +15,16 @@ app.post("/api", (request, response) => {
     const data = request.body;
     data.timestamp = Date.now();
     db.insert(data)
-    response.json({
-        latitude: data.latitude,
-        longitude: data.longitude,
-        timestamp: data.timestamp
-    });
+    response.json(data);
+})
+
+app.get("/all", (request, response) => {
+    db.find({}, (err, docs) => {
+        if(err) {
+            response.end();
+        }
+        else {
+            response.json(docs);
+        }
+    })
 })

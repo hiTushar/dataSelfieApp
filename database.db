@@ -1,11 +1,4 @@
-{"name":"tushar","age":26,"_id":"9izFg0BA49zqg1FS"}
-{"name":"miraj","age":26,"_id":"BIL72wLqjNKBc1tA"}
-{"name":"miraj","age":26,"_id":"FQ4S9G3fPmU6y38G"}
-{"latitude":22.717,"longitude":75.8337,"_id":"HV6VjbliFWyhtBdo"}
-{"latitude":22.717,"longitude":75.8337,"timestamp":1673975933091,"_id":"IiZKzv7Q0pfLnPO9"}
-{"name":"miraj","age":26,"_id":"LSwNlB8jf8GFobao"}
-{"latitude":22.717,"longitude":75.8337,"_id":"PX0tnHwu53whTbjl"}
-{"latitude":22.717,"longitude":75.8337,"_id":"VC97Uicdeu6jq0jH"}
-{"name":"tushar","age":26,"_id":"e5lyoYCRvatW51Mm"}
-{"name":"tushar","age":26,"_id":"sMYysR1CgqI59QfX"}
-{"latitude":22.717,"longitude":75.8337,"_id":"xmNpxbZIycxK6Z7b"}
+{"latitude":22.717,"longitude":75.8337,"value":"tushar","timestamp":1674024726576,"_id":"ZDCk6FLEcm7Y4lDh"}
+{"latitude":22.717,"longitude":75.8337,"value":"tushar","timestamp":1674025013510,"_id":"WH2vCteVttAu7lvQ"}
+{"latitude":22.717,"longitude":75.8337,"value":"tushar","timestamp":1674025015407,"_id":"R1fSFabutcqZPWUk"}
+{"latitude":22.717,"longitude":75.8337,"value":"asdf","timestamp":1674025018045,"_id":"pD3zqvetMGkh4rxD"}
