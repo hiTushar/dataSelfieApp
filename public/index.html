@@ -1,38 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js"
-      integrity="sha512-WJXVjqeINVpi5XXJ2jn0BSCfp0y80IKrYh731gLRnkAS9TKc5KNt/OfLtu+fCueqdWniouJ1ubM+VI/hbo7POQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-  </head>
-  <body>
-    <h1>Data Selfie App</h1>
-    <div><a href="index.html">home</a> | <a href="all.html">all</a></div>
-    <p>
-      Latitude: <span id="latitude"></span>&deg; Longitude:
-      <span id="longitude"></span>&deg;
-    </p>
-    <input id="input" />
-    <button id="submit">Submit</button>
-    <script>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js"
+    integrity="sha512-WJXVjqeINVpi5XXJ2jn0BSCfp0y80IKrYh731gLRnkAS9TKc5KNt/OfLtu+fCueqdWniouJ1ubM+VI/hbo7POQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+  <h1>Data Selfie App</h1>
+  <div><a href="index.html">home</a> | <a href="all.html">all</a></div>
+  <p>
+    Latitude: <span id="latitude"></span>&deg; Longitude:
+    <span id="longitude"></span>&deg;
+  </p>
+  <input id="input" />
+  <button id="submit">Submit</button>
+  <script>
+
+    function setup() {
+      noCanvas();
+      const video = createCapture(VIDEO);
+      video.size(320, 240);
       let latitude, longitude;
       const button = document.getElementById('submit');
       button.addEventListener('click', async () => {
         const value = document.getElementById('input').value;
-
+        video.loadPixels(); // alert p5.js to take that video element, load the pixels onto the canvas, so it can then be converted to base64.
+        const image64 = video.canvas.toDataURL();
         const options = {
           method: 'POST', // or 'PUT'
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ latitude, longitude, value }),
+          body: JSON.stringify({latitude, longitude, value, image64}),
         };
         const response = await fetch('/api', options);
         const data = await response.json();
@@ -50,6 +55,10 @@
       } else {
         console.log('no geolocation');
       }
-    </script>
-  </body>
+    }
+
+
+  </script>
+</body>
+
 </html>
