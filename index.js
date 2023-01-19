@@ -1,4 +1,5 @@
 const express = require("express");
+const fs = require("fs")
 const Datastore = require("nedb");
 
 const app = express();
@@ -14,6 +15,10 @@ app.post("/api", (request, response) => {
   console.log(request.body);
   const data = request.body;
   data.timestamp = Date.now();
+  data.image_file = `image_${data.timestamp}.png`;
+  const base64Data = data.image64.replace(/^data:image\/png;base64,/, "");
+  fs.writeFileSync(`public/images/${data.image_file}`, base64Data, "base64");
+  delete data.image64;
   db.insert(data)
   response.json(data);
 })
